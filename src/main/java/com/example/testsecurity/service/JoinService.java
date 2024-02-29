@@ -34,7 +34,6 @@ public class JoinService {
         if(isUser){
             return;
         }
-
         UserEntity data = new UserEntity();
         data.setUsername(joinDTO.getUsername());
         data.setPassword(bCryptPasswordEncoder.encode(joinDTO.getPassword()));

@@ -12,8 +12,9 @@ public class LoginController {
     public String loginP() {
         return "login";
     }
-    @PostMapping("/loginProc")
-    public String loginProc() {
-        return"/admin";
-    }
+//    @PostMapping("/login")
+//    public String loginProc() {
+//        System.out.println("LoginController.loginProc");
+//        return"/admin";
+//    }
 }

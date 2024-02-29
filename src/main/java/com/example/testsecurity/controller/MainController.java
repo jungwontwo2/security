@@ -17,12 +17,15 @@ public class MainController {
         String id = SecurityContextHolder.getContext().getAuthentication().getName();
         model.addAttribute("id",id);
 
+
+
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
         Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
         Iterator<? extends GrantedAuthority> iter = authorities.iterator();
         GrantedAuthority auth = iter.next();
         String role = auth.getAuthority();
+
         model.addAttribute("role", role);
         return "main";
     }
