@@ -13,17 +13,23 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
 
-        http.authorizeHttpRequests((auth)->auth.
-                requestMatchers("/","/login","/join","joinProc").permitAll()
+        http
+                .authorizeHttpRequests((auth)->auth.
+                requestMatchers("/","/login","loginProc","/join","/joinProc").permitAll()
                 .requestMatchers("/admin").hasRole("ADMIN")
                 .requestMatchers("/my/**").hasAnyRole("ADMIN","USER")
                 .anyRequest().authenticated()
         );
 
-        http.formLogin((auth)-> auth.loginPage("/login")
+        http
+                .formLogin((auth)-> auth.loginPage("/login")
                 .loginProcessingUrl("/loginProc")
-                .permitAll());
-        http.csrf((auth)->auth.disable());
+                .permitAll()
+        );
+
+
+        http
+                .csrf((auth)->auth.disable());
 
 
         return http.build();
